@@ -11,7 +11,8 @@ export class PortfolioService {
     constructor(@InjectModel(Portfolio) private PortfolioRepository: typeof Portfolio) { }
 
     async createPortfolio(dto: CreatePortfolioDto) {
-        const portfolio = await this.PortfolioRepository.create({ ...dto });
+        // const portfolio = await this.PortfolioRepository.create({ ...dto });
+        const portfolio = await this.PortfolioRepository.create(dto);
         return portfolio;
     }
 

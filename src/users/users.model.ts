@@ -39,9 +39,11 @@ export class User extends Model<User, UserCreationAttrs> {
     @BelongsToMany(() => Role, () => UserRoles)
     roles: Role[];
 
-    @BelongsToMany(() => Portfolio, () => UserPortfolios)
-    portfolios: Portfolio[];
+    // @BelongsToMany(() => Portfolio, () => UserPortfolios)
+    // portfolios: Portfolio[];
 
+    @HasMany(() => Portfolio)
+    portfolios: Portfolio[];
 
 
     // @HasMany(() => Portfolio)

@@ -1,4 +1,4 @@
-import { Body, Controller, Post, UploadedFile, UseInterceptors } from '@nestjs/common';
+import { Body, Controller, Get, Post, UploadedFile, UseInterceptors } from '@nestjs/common';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { CreatePortfolioDto } from './dto/create-portfolio.dto';
@@ -15,19 +15,14 @@ export class PortfolioController {
     @ApiOperation({ summary: 'Создание портфолио' })
     // @ApiResponse({ status: 200, type: Portfolio })
     @Post('/create')
-    // @UseInterceptors(FileInterceptor('image '))
-    // createPortfolio(@Body() dto: CreatePortfolioDto,
-    //     @UploadedFile() image) {
-    //     return this.portfolioService.createPortfolio(dto)
-    // }
     createPortfolio(@Body() dto: CreatePortfolioDto) {
         return this.portfolioService.createPortfolio(dto)
     }
 
     @ApiOperation({ summary: 'Просмотр всех портфолио' })
     // @ApiResponse({ status: 200, type: Portfolio })
-    @Post('/getAll')
-    getAllPortfolios(@Body() dto: CreatePortfolioDto) {
+    @Get('/getAll')
+    getAllPortfolios() {
         return this.portfolioService.getAllPortfolios()
     }
 

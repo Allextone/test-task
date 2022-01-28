@@ -7,6 +7,8 @@ interface ImageCreationAttrs {
     name: string;
     description: string;
     // comments: string;
+    portfolioId: number;
+    userId: number;
     image: string;
 }
 
@@ -25,9 +27,9 @@ export class Image extends Model<Image, ImageCreationAttrs> {
     @Column({ type: DataType.STRING, allowNull: false })
     description: string;
 
-    @ApiProperty({ example: '[image1, image2, ...]', description: 'Комментарии пользователей' })
-    @Column({ type: DataType.STRING, allowNull: false })
-    comments: string;
+    // @ApiProperty({ example: '[image1, image2, ...]', description: 'Комментарии пользователей' })
+    // @Column({ type: DataType.STRING, allowNull: false })
+    // comments: string;
 
     @ApiProperty({ example: '4', description: 'Id портфолио, за которым будет числиться пост' })
     @ForeignKey(() => Portfolio)
@@ -39,6 +41,6 @@ export class Image extends Model<Image, ImageCreationAttrs> {
     @Column({ type: DataType.INTEGER, allowNull: false })
     userId: number;
 
-    @BelongsTo(() => User)
-    author: User
+    @BelongsTo(() => Portfolio)
+    author: Portfolio
 }

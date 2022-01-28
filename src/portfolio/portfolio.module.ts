@@ -13,6 +13,9 @@ import { UserPortfolios } from './user-portfolio.model';
   imports: [
     SequelizeModule.forFeature([User, Portfolio, UserPortfolios]),
     // FilesModule
+  ],
+  exports: [
+    PortfolioService
   ]
 })
 export class PortfolioModule { }

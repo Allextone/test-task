@@ -1,5 +1,5 @@
 import { ApiProperty } from "@nestjs/swagger";
-import { BelongsTo, BelongsToMany, Column, DataType, ForeignKey, Model, Table } from "sequelize-typescript";
+import { BelongsTo, BelongsToMany, Column, DataType, ForeignKey, HasMany, Model, Table } from "sequelize-typescript";
 import { Image } from "src/image/image.model";
 import { PortfoliosImage } from "src/image/portfolio-image.model";
 import { User } from "src/users/users.model";
@@ -40,6 +40,9 @@ export class Portfolio extends Model<Portfolio, PortfolioCreationAttrs> {
     @BelongsToMany(() => User, () => UserPortfolios)
     author: User[];
 
-    @BelongsToMany(() => Image, () => PortfoliosImage)
+    @HasMany(() => Image)
     images: Image[];
+
+    // @BelongsToMany(() => Image, () => PortfoliosImage)
+    // images: Image[];
 }
