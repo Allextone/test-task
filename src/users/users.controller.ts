@@ -7,6 +7,7 @@ import { ValidationPipe } from 'src/pipes/validation.pipe';
 import { addRoleDto } from './dto/add-role.dto';
 import { banUserDto } from './dto/ban-user.dto';
 import { CreateUserDto } from './dto/create-user.dto';
+import { deleteUserDto } from './dto/delete-user.dto';
 import { User } from './users.model';
 import { UsersService } from './users.service';
 
@@ -54,4 +55,10 @@ export class UsersController {
         return this.usersService.banUser(dto);
     }
 
+    @ApiOperation({ summary: 'Удалить пользователя' })
+    @ApiResponse({ status: 200 })
+    @Post('/delete')
+    deleteUser(@Body() dto: deleteUserDto) {
+        return this.usersService.deleteUser(dto)
+    }
 }

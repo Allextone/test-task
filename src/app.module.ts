@@ -7,12 +7,15 @@ import { RolesModule } from './roles/roles.module';
 import { Role } from "./roles/roles.model";
 import { UserRoles } from "./roles/user-roles.model";
 import { AuthModule } from './auth/auth.module';
-import { PostsModule } from './posts/posts.module';
-import { Post } from "./posts/posts.model";
+import { Portfolio } from "./portfolio/portfolio.model";
 import { FilesModule } from './files/files.module';
 import { ServeStaticModule } from "@nestjs/serve-static";
-import { PortfolioModule } from './portfolio/portfolio.module';
 import * as path from 'path';
+import { PortfolioModule } from "./portfolio/portfolio.module";
+import { ImageModule } from './image/image.module';
+import { UserPortfolios } from "./portfolio/user-portfolio.model";
+import { Image } from "./image/image.model";
+import { PortfoliosImage } from "./image/portfolio-image.model";
 
 
 @Module({
@@ -34,15 +37,15 @@ import * as path from 'path';
             username: process.env.POSTGRES_USER,
             password: process.env.POSTGRESS_PASSWORD,
             database: process.env.POSTGRES_DB,
-            models: [User, Role, UserRoles, Post],
+            models: [User, Role, UserRoles, Portfolio, UserPortfolios, Image, PortfoliosImage],
             autoLoadModels: true,
         }),
         UsersModule,
         RolesModule,
         AuthModule,
-        PostsModule,
         FilesModule,
         PortfolioModule,
+        ImageModule,
     ]
 })
 

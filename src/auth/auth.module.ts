@@ -10,7 +10,6 @@ import { JwtModule } from '@nestjs/jwt';
   imports: [
     forwardRef(() => UsersModule),
     JwtModule.register({
-      //47:55 остановился на написании формы регистрации по jwt токену , форма юзера и роли описана
       secret: process.env.PRIVATEE_KEY || 'SECRET',
       signOptions: {
         expiresIn: '1h'

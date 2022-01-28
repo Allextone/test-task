@@ -1,6 +1,7 @@
 import { ApiProperty } from "@nestjs/swagger";
 import { BelongsToMany, Column, DataType, HasMany, Model, Table } from "sequelize-typescript";
-import { Post } from "src/posts/posts.model";
+import { Portfolio } from "src/portfolio/portfolio.model";
+import { UserPortfolios } from "src/portfolio/user-portfolio.model";
 import { Role } from "src/roles/roles.model";
 import { UserRoles } from "src/roles/user-roles.model";
 
@@ -31,10 +32,19 @@ export class User extends Model<User, UserCreationAttrs> {
     @Column({ type: DataType.STRING, allowNull: true })
     banReason: string;
 
+    @ApiProperty({ example: 'false', description: 'Удалён пользователь или нет' })
+    @Column({ type: DataType.BOOLEAN, defaultValue: false })
+    deleted: boolean;
+
     @BelongsToMany(() => Role, () => UserRoles)
     roles: Role[];
 
-    @HasMany(() => Post)
-    posts: Post[];
+    @BelongsToMany(() => Portfolio, () => UserPortfolios)
+    portfolios: Portfolio[];
+
+
+
+    // @HasMany(() => Portfolio)
+    // portfolios: Portfolio[];
 
 }

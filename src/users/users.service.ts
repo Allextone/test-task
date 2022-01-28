@@ -4,6 +4,7 @@ import { RolesService } from 'src/roles/roles.service';
 import { addRoleDto } from './dto/add-role.dto';
 import { banUserDto } from './dto/ban-user.dto';
 import { CreateUserDto } from './dto/create-user.dto';
+import { deleteUserDto } from './dto/delete-user.dto';
 import { User } from './users.model';
 
 @Injectable()
@@ -50,6 +51,14 @@ export class UsersService {
         user.banReason = dto.banReason;
         await user.save();
         return user;
+    }
+
+    async deleteUser(dto: deleteUserDto) {
+        const user = await this.userRepository.destroy();
+        if (!user) {
+            throw new HttpException("Пользователь не найден!", HttpStatus.NOT_FOUND)
+        }
+        return "Пользователь был удалён!";
     }
 }
 

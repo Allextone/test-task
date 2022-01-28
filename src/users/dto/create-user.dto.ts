@@ -5,7 +5,6 @@ export class CreateUserDto {
 
     @ApiProperty({ example: 'user@gmail.com', description: 'Почтовый адресс' })
     @IsString({ message: 'Должно быть строкой!' })
-    // @IsEmail({ message: 'Некорректный email.' })
     @IsEmail({}, { message: 'Некорректный email!' })
     readonly email: string;
 

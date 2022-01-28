@@ -1,12 +1,15 @@
 import { IsString } from "class-validator";
 
-export class CreatePortfolioDto {
+export class CreateImageDto {
     @IsString({ message: 'Должно быть строкой!' })
     readonly name: string;
 
     @IsString({ message: 'Должно быть строкой!' })
     readonly description: string;
 
+    @IsString({ message: 'Должно быть строкой!' })
+    readonly image: string;
+
     // @IsString({ message: 'Должно быть строкой!' })
-    // readonly images: string;
+    // readonly comments: string;
 }

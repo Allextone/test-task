@@ -17,7 +17,6 @@ export class AuthService {
     }
 
     private async validateUser(userDto: CreateUserDto) {
-        // throw new Error('Method not implemented.');
         const user = await this.userService.getUserByEmail(userDto.email);
         const passwordEquels = await bcrypt.compare(userDto.password, user.password);
         if (user && passwordEquels) {
@@ -43,4 +42,19 @@ export class AuthService {
             token: this.jwtService.sign(payload)
         }
     }
+
+    // async logout() {
+    //     const user = await this.jwtService.verify(token);
+    //     if (!user) {
+
+    //     }
+    // }
+
+    // private async deleteToken(user: User) {
+    //     const tokenVarify = await this.jwtService.verify(token);
+    //     if (!tokenVarify) {
+    //         throw new HttpException("Пользователь не залогинен!", HttpStatus.BAD_REQUEST)
+    //     }
+    //     return
+    // }
 }
