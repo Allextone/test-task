@@ -3,6 +3,7 @@ import { SequelizeModule } from '@nestjs/sequelize';
 import { AuthModule } from 'src/auth/auth.module';
 import { PortfoliosImage } from 'src/image/portfolio-image.model';
 import { Portfolio } from 'src/portfolio/portfolio.model';
+import { PortfolioModule } from 'src/portfolio/portfolio.module';
 import { UserPortfolios } from 'src/portfolio/user-portfolio.model';
 import { Role } from 'src/roles/roles.model';
 import { RolesModule } from 'src/roles/roles.module';
@@ -15,8 +16,9 @@ import { UsersService } from './users.service';
   controllers: [UsersController],
   providers: [UsersService],
   imports: [
-    SequelizeModule.forFeature([User, Role, UserRoles, Portfolio, UserPortfolios]),
+    SequelizeModule.forFeature([User, Role, Portfolio, UserRoles, UserPortfolios]),
     RolesModule,
+    PortfolioModule,
     forwardRef(() => AuthModule),
   ],
   exports: [

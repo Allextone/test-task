@@ -1,6 +1,7 @@
-import { Module } from '@nestjs/common';
+import { forwardRef, Module } from '@nestjs/common';
 import { SequelizeModule } from '@nestjs/sequelize';
-// import { FilesModule } from 'src/files/files.module';
+import { AuthModule } from 'src/auth/auth.module';
+import { ImageModule } from 'src/image/image.module';
 import { User } from 'src/users/users.model';
 import { PortfolioController } from './portfolio.controller';
 import { Portfolio } from './portfolio.model';
@@ -11,8 +12,9 @@ import { UserPortfolios } from './user-portfolio.model';
   controllers: [PortfolioController],
   providers: [PortfolioService],
   imports: [
-    SequelizeModule.forFeature([User, Portfolio, UserPortfolios]),
-    // FilesModule
+    SequelizeModule.forFeature([Portfolio, User, UserPortfolios]),
+    ImageModule,
+    forwardRef(() => AuthModule),
   ],
   exports: [
     PortfolioService
