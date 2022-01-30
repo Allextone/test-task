@@ -2,14 +2,14 @@ import { ApiProperty } from "@nestjs/swagger";
 import { BelongsTo, BelongsToMany, Column, DataType, ForeignKey, Model, Table } from "sequelize-typescript";
 import { Portfolio } from "src/portfolio/portfolio.model";
 import { User } from "src/users/users.model";
+import { PortfoliosImage } from "./portfolio-image.model";
 
 interface ImageCreationAttrs {
     name: string;
     description: string;
-    // comments: string;
+    image: string;
     portfolioId: number;
     userId: number;
-    image: string;
 }
 
 @Table({ tableName: 'image' })
@@ -31,6 +31,10 @@ export class Image extends Model<Image, ImageCreationAttrs> {
     // @Column({ type: DataType.STRING, allowNull: false })
     // comments: string;
 
+    @ApiProperty({ example: 'qwe wqe qweqw', description: 'Название изображения' })
+    @Column({ type: DataType.STRING, allowNull: false })
+    image: string;
+
     @ApiProperty({ example: '4', description: 'Id портфолио, за которым будет числиться пост' })
     @ForeignKey(() => Portfolio)
     @Column({ type: DataType.INTEGER, allowNull: false })
@@ -41,6 +45,9 @@ export class Image extends Model<Image, ImageCreationAttrs> {
     @Column({ type: DataType.INTEGER, allowNull: false })
     userId: number;
 
-    @BelongsTo(() => Portfolio)
-    author: Portfolio
+    // @BelongsToMany(() => Portfolio, () => PortfoliosImage)
+    // author: Portfolio[]
+
+    // @BelongsTo(() => Portfolio)
+    // author: Portfolio[]
 }

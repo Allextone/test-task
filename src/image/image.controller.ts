@@ -14,10 +14,9 @@ export class ImageController {
     @ApiOperation({ summary: 'Создание картинки' })
     // @ApiResponse({ status: 200, type: Portfolio })
     @Post('/create')
-    @UseInterceptors(FileInterceptor('image '))
+    @UseInterceptors(FileInterceptor('image'))
     createPortfolio(@Body() dto: CreateImageDto,
         @UploadedFile() image) {
-        console.log(`dto`, dto)
         return this.imageService.createImage(dto, image)
     }
 

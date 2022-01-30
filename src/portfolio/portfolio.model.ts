@@ -40,11 +40,11 @@ export class Portfolio extends Model<Portfolio, PortfolioCreationAttrs> {
     // @BelongsToMany(() => User, () => UserPortfolios)
     // author: User[];
 
-    @BelongsToMany(() => Portfolio, () => UserPortfolios)
-    images: Image[];
-
-    // @HasMany(() => Image)
+    // @BelongsToMany(() => Portfolio, () => UserPortfolios)
     // images: Image[];
+
+    @HasMany(() => Image)
+    images: Image[];
 
     // @BelongsToMany(() => Image, () => PortfoliosImage)
     // images: Image[];

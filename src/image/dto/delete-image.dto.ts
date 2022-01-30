@@ -1,7 +1,7 @@
-import { IsString } from "class-validator";
+import { IsNumber, IsString } from "class-validator";
 
 export class DeleteImageDto {
-    @IsString({ message: 'Должно быть числом!' })
+    @IsNumber({}, { message: 'Должно быть числом!' })
     readonly imageId: number;
 
     @IsString({ message: 'Должно быть строкой!' })

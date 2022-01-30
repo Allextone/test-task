@@ -13,14 +13,12 @@ export class ImageService {
 
     async createImage(dto: CreateImageDto, image: any) {
         const fileName = await this.filesService.createFile(image);
-        console.log(`fileName`, fileName)
-        const portfolio = await this.ImageRepository.create({ ...dto, image: fileName });
-        console.log(`portfolio`, portfolio)
-        return portfolio;
+        const imagePost = await this.ImageRepository.create({ ...dto, image: fileName });
+        return imagePost;
     }
 
     async getAllImages() {
-        const portfolio = await this.ImageRepository.findAll({ include: { all: true } });
+        const portfolio = await this.ImageRepository.findAll({ include: { all: true, order: ['createdAt', 'ASC'] } });
         return portfolio;
     }
 

@@ -19,7 +19,7 @@ export class AuthController {
         return this.authService.registration(userDto);
     }
 
-    // @Post('/logout')
+    // @Post('/logout') // логаут делаем через удаление токена из 'bearer token'
     // logout(@Body() userDto: CreateUserDto) {
     //     return this.authService.logout(userDto);
     // }
