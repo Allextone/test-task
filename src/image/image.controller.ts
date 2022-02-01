@@ -28,7 +28,6 @@ export class ImageController {
     }
 
     @ApiOperation({ summary: 'Удаление картинки' })
-    // @ApiResponse({ status: 200, type: Portfolio })
     @Post('/delete')
     deletePortfolio(@Body() dto: DeleteImageDto) {
         const deletedPortfolio = this.imageService.deleteImage(dto);
