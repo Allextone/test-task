@@ -9,7 +9,7 @@ async function start() {
     const app = await NestFactory.create(AppModule);
 
     const config = new DocumentBuilder()
-        .setTitle('test-task')
+        .setTitle('portfolio-publication-api')
         .setDescription('Documentation for project')
         .setVersion('1.0.0')
         .addTag('Vislohuzov Aleksey')

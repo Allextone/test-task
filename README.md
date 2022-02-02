@@ -32,6 +32,34 @@
 $ npm install
 ```
 
+## Cahnge .env
+
+```bash
+# rename .env.sample -> .env and enter data
+PORT=5000
+POSTGRES_HOST=localhost
+POSTGRES_USER=postgres
+POSTGRES_DB=portfolio-publication-site
+POSTGRESS_PASSWORD=root
+POSTGRESS_PORT=5432
+
+# create .development.env and enter data
+PORT=5000
+POSTGRES_HOST=localhost
+POSTGRES_USER=postgres
+POSTGRES_DB=portfolio-publication-site
+POSTGRESS_PASSWORD=root
+POSTGRESS_PORT=5432
+
+# create .production.env and enter data
+PORT=3000
+POSTGRES_HOST=localhost
+POSTGRES_USER=postgres
+POSTGRES_DB=portfolio-publication-site
+POSTGRESS_PASSWORD=root
+POSTGRESS_PORT=5432
+```
+
 ## Running the app
 
 ```bash
