@@ -2,7 +2,6 @@ import { ApiProperty } from "@nestjs/swagger";
 import { IsNumber, IsString } from "class-validator";
 
 export class deleteUserDto {
-
     @ApiProperty({ example: '2', description: 'Уникальный идентификатор пользователя' })
     @IsNumber({}, { message: 'Должно быть числом!' })
     readonly userId: number;

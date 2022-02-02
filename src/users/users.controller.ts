@@ -27,7 +27,7 @@ export class UsersController {
 
     @ApiOperation({ summary: 'Получение всех пользователей' })
     @ApiResponse({ status: 200, type: [User] })
-    @Roles('ADMIN')
+    // @Roles('ADMIN')
     @UseGuards(RolesGuard)
     // @UseGuards(JwtAuthGuard)
     @Get()
@@ -37,7 +37,7 @@ export class UsersController {
 
     @ApiOperation({ summary: 'Выдать роль' })
     @ApiResponse({ status: 200 })
-    @Roles('ADMIN')
+    // @Roles('ADMIN')
     @UseGuards(RolesGuard)
     // @UseGuards(JwtAuthGuard)
     @Post('/role')
@@ -47,7 +47,7 @@ export class UsersController {
 
     @ApiOperation({ summary: 'Забанить пользователя' })
     @ApiResponse({ status: 200 })
-    @Roles('ADMIN')
+    // @Roles('ADMIN')
     @UseGuards(RolesGuard)
     // @UseGuards(JwtAuthGuard)
     @Post('/ban')

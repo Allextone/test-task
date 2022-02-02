@@ -4,7 +4,7 @@ import { Portfolio } from "src/portfolio/portfolio.model";
 import { Image } from "./image.model";
 
 
-@Table({ tableName: 'user_portfolios', createdAt: false, updatedAt: false })
+@Table({ tableName: 'portfolios_image', createdAt: false, updatedAt: false })
 export class PortfoliosImage extends Model<PortfoliosImage> {
     @ApiProperty({ example: '1', description: 'Уникальный идентификатор' })
     @Column({ type: DataType.INTEGER, unique: true, autoIncrement: true, primaryKey: true })
