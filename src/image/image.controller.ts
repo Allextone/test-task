@@ -1,6 +1,7 @@
-import { Body, Controller, Get, Post, UploadedFile, UseInterceptors } from '@nestjs/common';
+import { Body, Controller, Get, Post, UploadedFile, UseGuards, UseInterceptors } from '@nestjs/common';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { ApiOperation, ApiTags } from '@nestjs/swagger';
+import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
 import { CreateImageDto } from './dto/create-image.dto';
 import { DeleteImageDto } from './dto/delete-image.dto';
 import { ImageService } from './image.service';
@@ -14,6 +15,7 @@ export class ImageController {
     @ApiOperation({ summary: 'Создание картинки' })
     // @ApiResponse({ status: 200, type: Portfolio })
     @Post('/create')
+    @UseGuards(JwtAuthGuard)
     @UseInterceptors(FileInterceptor('image'))
     createPortfolio(@Body() dto: CreateImageDto,
         @UploadedFile() image) {
@@ -28,6 +30,7 @@ export class ImageController {
     }
 
     @ApiOperation({ summary: 'Удаление картинки' })
+    @UseGuards(JwtAuthGuard)
     @Post('/delete')
     deletePortfolio(@Body() dto: DeleteImageDto) {
         const deletedPortfolio = this.imageService.deleteImage(dto);

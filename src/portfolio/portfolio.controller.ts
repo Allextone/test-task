@@ -1,5 +1,6 @@
-import { Body, Controller, Get, Post, UploadedFile, UseInterceptors } from '@nestjs/common';
+import { Body, Controller, Get, Post, UploadedFile, UseGuards, UseInterceptors } from '@nestjs/common';
 import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
+import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
 import { CreatePortfolioDto } from './dto/create-portfolio.dto';
 import { DeletePortfolioDto } from './dto/delete-portfolio.dto';
 import { Portfolio } from './portfolio.model';
@@ -13,6 +14,7 @@ export class PortfolioController {
 
     @ApiOperation({ summary: 'Создание портфолио' })
     @ApiResponse({ status: 200, type: Portfolio })
+    @UseGuards(JwtAuthGuard)
     @Post('/create')
     createPortfolio(@Body() dto: CreatePortfolioDto) {
         return this.portfolioService.createPortfolio(dto)
@@ -27,6 +29,7 @@ export class PortfolioController {
 
     @ApiOperation({ summary: 'Удаление портфолио' })
     @ApiResponse({ status: 200 })
+    @UseGuards(JwtAuthGuard)
     @Post('/delete')
     deletePortfolio(@Body() dto: DeletePortfolioDto) {
         const deletedPortfolio = this.portfolioService.deletePortfolio(dto);

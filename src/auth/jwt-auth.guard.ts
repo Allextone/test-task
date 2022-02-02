@@ -28,7 +28,6 @@ export class JwtAuthGuard implements CanActivate {
             console.log(`Error`, e);
             throw new UnauthorizedException({ message: "Пользователь не авторизован!" });
         }
-        // throw new Error("Method not implemented.");
     }
 
 }

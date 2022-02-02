@@ -7,7 +7,6 @@ import * as uuid from 'uuid';
 export class FilesService {
 
     async createFile(file): Promise<string> {
-        console.log(`file`, file)
         try {
             const fileName = uuid.v4() + '.jpg';
             const filePath = path.resolve(__dirname, '..', 'static');

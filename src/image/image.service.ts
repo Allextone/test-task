@@ -18,7 +18,7 @@ export class ImageService {
     }
 
     async getAllImages() {
-        const portfolio = await this.ImageRepository.findAll({ include: { all: true, order: ['createdAt', 'ASC'] } });
+        const portfolio = await this.ImageRepository.findAll({ include: { all: true }, order: [['createdAt', 'DESC']]});
         return portfolio;
     }
 
