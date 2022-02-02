@@ -32,7 +32,7 @@
 $ npm install
 ```
 
-## Cahnge .env
+## Change .env
 
 ```bash
 # rename .env.sample -> .env and enter data
